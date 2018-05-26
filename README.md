@@ -1,2 +1,2 @@
 # myHomeAutomoation
-My Home Automotation System
+My Home Automation System
