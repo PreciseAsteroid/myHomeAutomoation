@@ -16,7 +16,9 @@ function Server() {
     if (this._readyForNextMsg) {
       console.log('message received: ',msg);
       obj = parser.parse(msg);
-      if(obj.options.clientIdentifier.address == 'fc:65:de:7b:a2:1c'){
+      if (typeof obj.options.clientIdentifier.address != 'undefined') {
+        return console.log("undefined Mac Address");
+      }else if (obj.options.clientIdentifier.address == 'fc:65:de:7b:a2:1c'){
         this._readyForNextMsg = false;
         console.log('found you and sending');
         player.play('./rsc/338.mp3', (err) => {
@@ -50,6 +52,7 @@ function Server() {
           console.log('just set the state of this._readyForNextMsg: ', this._readyForNextMsg);
         },5000);
     }else{
+      console.log('Mac Address: ', obj.options.clientIdentifier.address);
       console.log('not the MAC address you are after ');
     }
 
