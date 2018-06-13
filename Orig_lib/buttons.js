@@ -53,7 +53,11 @@ buttons.prototype.execute = function(msg) {
 
 buttons.prototype.getKey = function(msg) {
   var obj = parser.parse(msg);
-  if (typeof obj.options.clientIdentifier.address == 'undefined' || this.activeButtons.indexOf(obj.options.clientIdentifier.address) != -1) {
+  if (
+      typeof obj == 'undefined' ||
+      typeof obj.options == 'undefined' || 
+      typeof obj.options.clientIdentifier == 'undefined' ||
+      typeof obj.options.clientIdentifier.address == 'undefined' || this.activeButtons.indexOf(obj.options.clientIdentifier.address) != -1) {
     return -1;
   }
   this.activeButtons.push(obj.options.clientIdentifier.address)
