@@ -55,7 +55,7 @@ buttons.prototype.getKey = function(msg) {
   var obj = parser.parse(msg);
   if (
       typeof obj == 'undefined' ||
-      typeof obj.options == 'undefined' || 
+      typeof obj.options == 'undefined' ||
       typeof obj.options.clientIdentifier == 'undefined' ||
       typeof obj.options.clientIdentifier.address == 'undefined' || this.activeButtons.indexOf(obj.options.clientIdentifier.address) != -1) {
     return -1;
@@ -98,9 +98,9 @@ buttons.prototype.triggerAction = function(type, key) {
   }
 };
 buttons.prototype.ifttt = function(key) {
-  var amirsID = "cT6lm_RqMdNT3IoJfLbUCY"
+  // var amirsID = "cT6lm_RqMdNT3IoJfLbUCY"
   var url = "https://maker.ifttt.com/trigger/button_pressed/with/key/"
-  request.post(url + amirsID, function(err, res, body) {
+  request.post(url + key, function(err, res, body) {
     if (!err && res.statusCode == 200) {
       console.log("message sent");
     } else {
